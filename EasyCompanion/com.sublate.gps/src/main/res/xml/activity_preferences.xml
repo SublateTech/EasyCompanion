@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/gpsWorkoutSettingsLabel">
+        <CheckBoxPreference
+            android:title="Start Service"
+            android:key="startStopService"/>
+
+        <Preference
+            android:title="@string/enabledisablegps_title"
+            android:summary="@string/enabledisablegps_summary"
+            android:key="enableDisableGps"
+            android:defaultValue="false"/>
+
+        <ListPreference
+            android:key="gps_updates_preference"
+            android:title="@string/pref_gps_updates"
+            android:entries="@array/viewUpdateTimeSettings"
+            android:entryValues="@array/updateTimeSettings"
+            android:defaultValue="@string/updateTimeDefault"/>
+
+        <ListPreference
+            android:key="mindistance_preference"
+            android:title="@string/settingDistanceBetweenPointLabel"
+            android:entries="@array/viewDistanceSetting"
+            android:entryValues="@array/distanceArray"
+            android:defaultValue="@string/distanceArrayDefault"/>
+
+        <ListPreference
+            android:key="mintime_preference"
+            android:title="@string/settingGPSSpeedScan"
+            android:entries="@array/viewTimeSetting"
+            android:entryValues="@array/timeArray"
+            android:defaultValue="@string/timeArrayDefault"/>
+
+        <CheckBoxPreference
+                android:key="network_preference"
+                android:title="Network Preference"
+                android:summary="GSM or Wifi preference"
+                android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="gps_preference"
+            android:title="GPS Preference"
+            android:summary="Prefer GPS Signal"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="signal_preference"
+            android:title="Signal Preference"
+            android:summary="Consider Signal Strength"
+            android:defaultValue="false"/>
+        </PreferenceCategory>
+
+        <PreferenceCategory android:title="@string/otherSettingsLabel">
+        <CheckBoxPreference
+                android:title="Reset Application"
+                android:defaultValue="false"
+                android:key="reset_preference"/>
+
+        <!--
+        <ListPreference
+            android:key="TimeToReport_preference"
+            android:title="Moment to report"
+            android:entries="@array/reportSetting"
+            android:entryValues="@array/timeArray"
+            android:defaultValue="@string/reportSettingDefault"/>-->
+
+
+        </PreferenceCategory>
+
+</PreferenceScreen>

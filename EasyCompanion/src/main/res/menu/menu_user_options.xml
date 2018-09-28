@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+    <item
+        android:id="@+id/user_profile_view"
+        android:orderInCategory="100"
+        android:title="View Profile ..."/>
+    -->
+
+    <item 
+        android:id="@+id/user_profile_location"
+        android:orderInCategory="100"
+        android:title="@string/follow_contact"/>
+    <item
+        android:id="@+id/user_get_routes"
+        android:orderInCategory="100"
+        android:title="@string/get_contact_routes"/>
+
+    <item
+        android:id="@+id/user_get_order"
+        android:orderInCategory="100"
+        android:title="@string/get_contact_order"/>
+</menu>

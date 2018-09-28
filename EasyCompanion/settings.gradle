@@ -1,0 +1,3 @@
+include ':MemorizingTrustManager', ':ConversationsXmpp', ':FriendsLocation', ':VoiceRecorder', ':ScheduleProvider', ':com.sublate.gps', ':Gpx', ':core'
+
+rootProject.name = 'EasyCompanion'

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Gps</string>
+
+    <string name="closeSettingsInfo">Restart application for apply changes</string>
+    <string name="notificationsGroupLabel">Notifications</string>
+    <string name="NotificationLabel">Show notification route</string>
+    <string name="vibraNotifylabel">Vibration notifications</string>
+    <string name="otherSettingsLabel">Others</string>
+    <string name="gpsWorkoutSettingsLabel">GPS settings</string>
+    <string name="settingShwoWorkoutInfoTitle">Show route info</string>
+    <string name="settingShowWorkoutInfoLabel">Show route info if stop</string>
+    <string name="exitAlertLabel">Warning before leaving</string>
+    <string name="disableMapSettingLabel">Disable map</string>
+
+
+    <string name="enabledisablegps_title">Enable/Disable GPS</string>
+    <string name="enabledisablegps_summary">Go to the phone settings to enable or disable the providers.</string>
+    <string name="pref_gps_updates">GPS Updates (minutes)</string>
+    <string name="pref_gps_updates_summary">Update GPS position approximately every… (1 minute minimum)</string>
+    <string name="pref_gps_updates_too_low">Sorry, this value is too low.</string>
+    <string name="pref_gps_updates_too_high">Sorry, this value is greater than max run time.</string>
+    <string name="pref_battery_drain">Watch out! Values below 30s can drain your battery.</string>
+
+    <string name="settingDistanceBetweenPointLabel">Distance between points</string>
+    <string name="settingGPSSpeedScan">Speed GPS scan</string>
+
+</resources>

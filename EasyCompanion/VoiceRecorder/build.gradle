@@ -1,0 +1,70 @@
+buildscript {
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.3'
+	}
+}
+allprojects {
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "com.sublate.easycompanion.voicerecorder"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 5
+        versionName "0.1.1"
+    }
+
+    if (project.hasProperty('mStoreFile') &&
+            project.hasProperty('mStorePassword') &&
+            project.hasProperty('mKeyAlias') &&
+            project.hasProperty('mKeyPassword')) {
+        signingConfigs {
+            release {
+                storeFile file(mStoreFile)
+                storePassword mStorePassword
+                keyAlias mKeyAlias
+                keyPassword mKeyPassword
+            }
+        }
+        buildTypes.release.signingConfig = signingConfigs.release
+    } else {
+        buildTypes.release.signingConfig = null
+    }
+
+    applicationVariants.all { variant ->
+                if (variant.name.equals('release')) {
+                        variant.outputs.each { output ->
+                                if (output.zipAlign != null) {
+                                        output.zipAlign.outputFile = new File(output.outputFile.parent, rootProject.name + "-${variant.versionName}.apk")
+                                }
+                                output.packageApplication.outputFile = new File(output.outputFile.parent, output.packageApplication.outputFile.name
+                                        .replace(".apk", "-${variant.versionName}.apk"))
+                        }
+                }
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}

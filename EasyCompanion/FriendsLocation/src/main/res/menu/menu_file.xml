@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_get_route"
+        android:title="@string/action_get_route"
+        android:icon="@drawable/ic_location"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_schedule_route"
+        android:title="@string/action_schedule_route"
+        android:icon="@drawable/ic_location"
+        app:showAsAction="ifRoom" />
+
+</menu>

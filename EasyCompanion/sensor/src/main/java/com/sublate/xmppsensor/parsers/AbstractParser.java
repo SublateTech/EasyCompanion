@@ -1,0 +1,90 @@
+package com.sublate.xmppsensor.parsers;
+
+import com.sublate.xmppsensor.entities.Account;
+import com.sublate.xmppsensor.entities.Contact;
+import com.sublate.xmppsensor.entities.Conversation;
+import com.sublate.xmppsensor.services.XmppConnectionService;
+import com.sublate.xmppsensor.xml.Element;
+import com.sublate.xmppsensor.xmpp.jid.InvalidJidException;
+import com.sublate.xmppsensor.xmpp.jid.Jid;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+
+
+public abstract class AbstractParser {
+
+	protected XmppConnectionService mXmppConnectionService;
+
+	protected AbstractParser(XmppConnectionService service) {
+		this.mXmppConnectionService = service;
+	}
+
+	public static Long parseTimestamp(Element element, Long d) {
+		Element delay = element.findChild("delay","urn:xmpp:delay");
+		if (delay != null) {
+			String stamp = delay.getAttribute("stamp");
+			if (stamp != null) {
+				try {
+					return AbstractParser.parseTimestamp(delay.getAttribute("stamp"));
+				} catch (ParseException e) {
+					return d;
+				}
+			}
+		}
+		return d;
+	}
+
+	public static long parseTimestamp(Element element) {
+		return parseTimestamp(element, System.currentTimeMillis());
+	}
+
+	public static long parseTimestamp(String timestamp) throws ParseException {
+		timestamp = timestamp.replace("Z", "+0000");
+		SimpleDateFormat dateFormat;
+		long ms;
+		if (timestamp.charAt(19) == '.' && timestamp.length() >= 25) {
+			String millis = timestamp.substring(19,timestamp.length() - 5);
+			try {
+				double fractions = Double.parseDouble("0" + millis);
+				ms = Math.round(1000 * fractions);
+			} catch (NumberFormatException e) {
+				ms = 0;
+			}
+		} else {
+			ms = 0;
+		}
+		timestamp = timestamp.substring(0,19)+timestamp.substring(timestamp.length() -5,timestamp.length());
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ",Locale.US);
+		return Math.min(dateFormat.parse(timestamp).getTime()+ms, System.currentTimeMillis());
+	}
+
+	protected void updateLastseen(final Account account, final Jid from) {
+		final Contact contact = account.getRoster().getContact(from);
+		contact.setLastResource(from.isBareJid() ? "" : from.getResourcepart());
+	}
+
+	protected String avatarData(Element items) {
+		Element item = items.findChild("item");
+		if (item == null) {
+			return null;
+		}
+		return item.findChildContent("data", "urn:xmpp:avatar:data");
+	}
+
+	public static String extractErrorMessage(Element packet) {
+		final Element error = packet.findChild("error");
+		if (error != null && error.getChildren().size() > 0) {
+			final String text = error.findChildContent("text");
+			if (text != null && !text.trim().isEmpty()) {
+				return text;
+			} else {
+				return error.getChildren().get(0).getName().replace("-"," ");
+			}
+		} else {
+			return null;
+		}
+	}
+}

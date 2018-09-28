@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_maps_api_key">AIzaSyC5Wb-dTVz4c5MWgY5T_9L2YpmGXSAbLkA</string>
+    <string name="friends_location_plugin">Friends Location Plugin</string>
+    <string name="friends_location">Friends Location</string>
+    <string name="cancel">Cancel</string>
+    <string name="share">Share</string>
+    <string name="locating">Locating&#8230;</string>
+    <string name="show_location">Show location</string>
+    <string name="location_sharing_disabled">Location sharing is disabled in settings</string>
+    <string name="enable">Enable</string>
+    <string name="follow_location">Start Viewing Your Friend\'s Location</string>
+
+    <string name="action_get_route">Get Contact Route</string>
+    <string name="action_schedule_route">Schedule Contact Route</string>
+
+</resources>

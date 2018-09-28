@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="autoemail_presets">
+        <item>"Manual Provider"</item>
+    </string-array>
+
+    <string-array name="filecreation_values">
+        <item>onceaday</item>
+        <item>everystart</item>
+        <item>custom</item>
+    </string-array>
+
+       <string-array name="autosend_values">
+        <item>0</item>
+        <item>8</item>
+        <item>6</item>
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+        <item>0.5</item>
+        <item>0.08</item>
+    </string-array>
+
+
+    <string-array name="autoemail_presetvalues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>99</item>
+    </string-array>
+
+
+
+    <string-array name="osm_visibility_choices">
+        <item>private</item>
+        <item>public</item>
+        <item>trackable</item>
+        <item>identifiable</item>
+    </string-array>
+
+    <string-array name="opengts_server_communication_methods">
+        <item>HTTP GET</item>
+        <item>UDP Raw</item>
+    </string-array>
+
+    <string-array name="opengts_server_communication_methods_values">
+        <item>HTTP</item>
+        <item>UDP</item>
+    </string-array>
+
+
+    <string-array name="listeners_values">
+        <item>gps</item>
+        <item>network</item>
+        <item>passive</item>
+    </string-array>
+
+
+</resources>
